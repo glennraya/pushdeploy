@@ -20,7 +20,6 @@ jobs:
 
     - name: Install Composer dependencies
       run: composer update
-      # run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
 
     - name: Install Node.js
       uses: actions/setup-node@v3
