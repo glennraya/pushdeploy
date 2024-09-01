@@ -32,6 +32,11 @@ jobs:
     - name: Build assets
       run: npm run build
 
+    - name: Add VPS to known hosts
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
+
     - name: Sync files to VPS
       uses: easingthemes/ssh-deploy@v2.1.5
       env:
