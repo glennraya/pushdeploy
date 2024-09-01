@@ -31,7 +31,7 @@ jobs:
 
     - name: Build assets
       run: npm run build
-      
+
     - name: Sync files to VPS
       uses: easingthemes/ssh-deploy@v2.1.5
       env:
@@ -51,7 +51,6 @@ jobs:
           cd /var/www/html/glennraya.com
           php artisan migrate --force
           php artisan optimize
-          php artisan optimize:clear
           php artisan config:cache
           php artisan route:cache
           php artisan view:cache
