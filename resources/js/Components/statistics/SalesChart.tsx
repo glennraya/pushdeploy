@@ -37,9 +37,11 @@ const chartData = [
     { month: 'July', subscribed: 32, unsubscribed: 2 }
 ]
 
-const SalesChart = () => {
+const SalesChart = ({ className }: { className: string }) => {
     return (
-        <Card className="h-fit w-full transition duration-300 ease-linear">
+        <Card
+            className={`h-fit w-full transition duration-300 ease-linear ${className}`}
+        >
             <CardHeader>
                 <CardTitle className="flex items-center justify-between text-2xl font-bold">
                     <span>Subscription Overview</span>

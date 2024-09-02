@@ -3,7 +3,6 @@ import { User } from '@/types'
 import Navigation from '@/Components/Navigation'
 import Footer from '@/Components/Footer'
 import AppHeader from '@/Components/AppHeader'
-import CustomToaster from '@/Components/CustomToaster'
 
 interface EventResponse {
     user_id: number
@@ -17,29 +16,9 @@ export default function Authenticated({
     children
 }: PropsWithChildren<{ user: User; header?: ReactNode }>) {
     const [showToaster, setShowToaster] = useState<Boolean>(false)
-    const [message, setMessage] = useState('')
 
-    useEffect(() => {
-        const echoInstance = (window as any).Echo
-        echoInstance
-            .private(`backup.${user.id}`)
-            .listen('BackupCompleted', (event: EventResponse) => {
-                setShowToaster(true)
-                setMessage(event.message)
-            })
-    }, [])
-
-    const handleCloseToaster = () => {
-        setShowToaster(false)
-    }
     return (
         <div className="relative min-h-dvh bg-gray-200 dark:bg-black">
-            {showToaster && (
-                <CustomToaster
-                    message={message}
-                    closeToaster={handleCloseToaster}
-                />
-            )}
             <div className="flex p-3 2xl:h-dvh">
                 <div className="flex w-full rounded-xl shadow-sm dark:bg-gray-900">
                     {/* Sidebar */}
